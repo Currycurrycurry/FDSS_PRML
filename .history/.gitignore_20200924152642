@@ -130,4 +130,3 @@ dmypy.json
 
 .idea/
 .ipynb_checkpoints/
-get-pip.py
