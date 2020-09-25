@@ -134,4 +134,9 @@ get-pip.py
 
 .history/
 
+.idea
+.vscode
+test.ipyb
+test.ipynb
+Untitled.ipynb
 
