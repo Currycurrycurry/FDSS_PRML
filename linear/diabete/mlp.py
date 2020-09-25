@@ -1,21 +1,20 @@
 import pandas as pd
 import numpy as np
-import (relu, sigmoid, cross_entropy) from libs
+from libs import *
 import matplotlib as plt
 
 np.random.seed(3)
 
 class FNN:
-
     def __init__(self, X_train, Y_train, lr=1e-6, layer_num=3, iteration_time=200):
         self.learning_rate = lr
         self.layer_num = layer_num
         self.layer_dims = [0] * layer_num
         self.iteration_time = iteration_time
-        self.W = [0] + [np.random.randn(layer_dims[i], layer_dims[i-1])*0.1 for i in range(1, layer_num)] 
-        self.b = [0] + [np.zeros((layer_dims[i], 1)) for i in range(1, layer_num)]
-        self.dw = [0] * len(self.layer_num + 1)
-        self.db = [0] * len(self.layer_num + 1)
+        self.w = [0] + [np.random.randn(self.layer_dims[i], self.layer_dims[i-1])*0.1 for i in range(1, layer_num)] 
+        self.b = [0] + [np.zeros((self.layer_dims[i], 1)) for i in range(1, layer_num)]
+        self.dw = [0] * (self.layer_num + 1)
+        self.db = [0] * (self.layer_num + 1)
         self.costs = []
         for i in range(iteration_time):
             final_val, caches = self.forward_propagation(X_train)
@@ -98,7 +97,8 @@ test_labels = test_dataset.pop('quality')
 
 train_dataset_size = train_dataset.shape[0]
 
-fnn = FNN()    
+fnn = FNN(train_dataset, train_labels)
+
     
 
 
