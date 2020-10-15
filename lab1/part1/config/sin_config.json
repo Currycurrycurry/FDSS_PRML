@@ -1,0 +1,14 @@
+{
+  "input_size": 1,
+  "layer_num": 2,
+  "layers": [
+    {
+        "size": 5,
+        "activation": "sigmoid"
+    },
+    {
+        "size": 1,
+        "activation": "dense"
+    }
+  ]
+}
