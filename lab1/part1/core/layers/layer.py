@@ -1,5 +1,6 @@
 import abc
 import numpy as np
+from lab1.part1.util.logger_util import logger
 
 
 class BaseLayer(object):
@@ -11,6 +12,8 @@ class BaseLayer(object):
         self.learning_rate = learning_rate
         self.weights = weights
         self.biases = biases
+        self.inputs = np.mat(np.zeros(last_layer_size))
+        self.outputs = np.mat(np.zeros(size))
 
     # @property
     # @abc.abstractmethod
@@ -43,21 +46,35 @@ class BaseLayer(object):
         if weights:
             self.weights = weights
         else:
-            self.weights = np.mat(np.random.rand(self.last_layer_size, self.size))
+            self.weights = np.mat(np.random.rand(self.last_layer_size, self.size)) * 0.01
 
     def set_biases(self, biases):
         if biases:
             self.biases = biases
         else:
-            self.biases = np.mat(np.random.rand(self.size))
+            self.biases = np.mat(np.random.rand(self.size)) * 0.01
 
     @abc.abstractmethod
-    def forward(self, inputs):
-        return
-    
+    def optimized(self):
+        return self.outputs
+
     @abc.abstractmethod
+    def get_backward_optimized_delta(self, errors):
+        return np.mat(np.zeros(self.size))
+
+    def forward(self, inputs):
+        self.inputs = inputs
+        self.outputs = np.dot(inputs, self.weights) - self.biases
+        self.outputs = self.optimized()
+        return self.outputs
+
     def backward(self, errors):
-        return
+        delta = self.get_backward_optimized_delta(errors)
+        logger.debug(delta)
+        result = np.dot(delta, self.weights.T)
+        self.weights += self.learning_rate * np.dot(self.inputs.T, delta)
+        self.biases -= self.learning_rate * delta
+        return result
 
 
 

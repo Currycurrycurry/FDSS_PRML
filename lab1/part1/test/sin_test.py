@@ -22,10 +22,14 @@ if __name__ == '__main__':
     for i in range(200):
         mlp.train(train_x, train_y, 1)
         outputs = mlp.predict(train_x)
+        logger.info(outputs)
+        logger.info(train_y)
         train_errors = get_mse(outputs, train_y)
-        outputs = mlp.predict(test_x)
-        test_errors = get_mse(outputs, test_y)
-        logger.info('epoch {}: train_error = {}, test_error = {}'.format(i, train_errors, test_errors))
+        # outputs = mlp.predict(test_x)
+        # test_errors = get_mse(outputs, test_y)
+        # logger.info('epoch {}: train_error = {:06.2f}, test_error = {:06.2f}'.format(i, train_errors, test_errors))
+        # logger.info('epoch %d, train_error=%.20f, test_error=%.20f' % (i, train_errors, test_errors))
+        logger.info('epoch %d, train_error=%.20f' % (i, train_errors))
 
 
 

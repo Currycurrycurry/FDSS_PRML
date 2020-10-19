@@ -1,7 +1,7 @@
 import numpy as np
 
 from lab1.part1.core.layerFactory import LayerFactory
-
+from lab1.part1.util.logger_util import logger
 
 class FNN:
     def __init__(self, config, learning_rate=0.001):
@@ -31,6 +31,7 @@ class FNN:
 
     def forward(self, x):
         x = np.mat(x)
+        logger.debug('x is {}'.format(x))
         for layer in self.network:
             x = layer.forward(x)
         return x
@@ -38,13 +39,13 @@ class FNN:
     def backward(self, expected_y, output):
         errors = expected_y - output
         errors = np.mat(errors)
+        logger.debug('errors are {}'.format(errors))
         for i in range(self.layer_num - 1, -1, -1):
             layer = self.network[i]
             errors = layer.backward(errors)
 
     def train(self, train_x, train_y, epoch_num):
         length = len(train_x)
-
         for _ in range(epoch_num):
             for i in range(length):
                 output = self.forward(train_x[i])

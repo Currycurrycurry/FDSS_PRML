@@ -3,28 +3,21 @@ from __future__ import absolute_import
 import abc
 import numpy as np
 from lab1.part1.core.layers.layer import BaseLayer
+from lab1.part1.util.logger_util import logger
 
 
 class DenseLayer(BaseLayer):
 
-    # def __init__(self,last_layer_size, size, learning_rate, weights, biases):
-        # self.last_layer_size = last_layer_size
-        # self.size = size
-        # self.learning_rate = learning_rate
-        # self.weights = weights
-        # self.biases = biases
-
-    def forward(self, inputs):
-        print('forward')
-        self.inputs = inputs
-        self.outputs = np.dot(inputs, self.weights) - self.biases
+    def optimized(self):
         return self.outputs
 
+    def get_backward_optimized_delta(self, errors):
+        delta = np.mat(np.zeros(self.size))
+        ones = np.mat(np.ones((self.outputs.shape[0], self.outputs.shape[1])))
+        for i in range(self.size):
+            delta[0, i] = errors[0, i] * ones
+        return delta
 
-    
-    def backward(self, errors):
-        print('backward')
-        for i in
 
 if __name__ == '__main__':
    print(issubclass(DenseLayer, BaseLayer))

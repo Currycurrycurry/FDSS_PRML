@@ -1,22 +1,20 @@
+import numpy as np
 import abc
 
 from lab1.part1.core.layers.layer import BaseLayer
+from lab1.part1.util.logger_util import logger
 
 
 class SigmoidLayer(BaseLayer):
 
-    # def __init__(self,last_layer_size, size, learning_rate, weights, biases):
-    #     self.last_layer_size = last_layer_size
-    #     self.size = size
-    #     self.learning_rate = learning_rate
-    #     self.weights = weights
-    #     self.biases = biases
+    def optimized(self):
+        self.outputs = 1 / (1 + np.exp(-self.outputs))
+        return self.outputs
 
-    def forward(self, inputs):
-        print('forward')
-
-    def backward(self, errors):
-        print('backward')
+    def get_backward_optimized_delta(self, errors):
+        delta1 = np.multiply(self.outputs, 1 - self.outputs)
+        delta2 = np.multiply(errors, delta1)
+        return delta2
 
 
 if __name__ == '__main__':
