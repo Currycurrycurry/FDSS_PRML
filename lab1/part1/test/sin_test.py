@@ -30,9 +30,3 @@ if __name__ == '__main__':
         # logger.info('epoch {}: train_error = {:06.2f}, test_error = {:06.2f}'.format(i, train_errors, test_errors))
         # logger.info('epoch %d, train_error=%.20f, test_error=%.20f' % (i, train_errors, test_errors))
         logger.info('epoch %d, train_error=%.20f' % (i, train_errors))
-
-
-
-
-
-

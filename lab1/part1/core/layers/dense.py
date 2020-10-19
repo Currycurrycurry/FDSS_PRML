@@ -20,7 +20,7 @@ class DenseLayer(BaseLayer):
 
 
 if __name__ == '__main__':
-   print(issubclass(DenseLayer, BaseLayer))
-   print(isinstance(DenseLayer(), BaseLayer)) 
-   print(dir(BaseLayer))
-   print(BaseLayer.__subclasses__())
+    print(issubclass(DenseLayer, BaseLayer))
+    print(isinstance(DenseLayer(), BaseLayer))
+    print(dir(BaseLayer))
+    print(BaseLayer.__subclasses__())

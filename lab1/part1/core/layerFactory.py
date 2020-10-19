@@ -1,4 +1,3 @@
-
 from lab1.part1.core.layers.dense import DenseLayer
 from lab1.part1.core.layers.relu import ReluLayer
 from lab1.part1.core.layers.sigmoid import SigmoidLayer
@@ -38,5 +37,3 @@ class LayerFactory(object):
 
 if __name__ == '__main__':
     print(LayerFactory.produce_layer('dense'))
-            
-

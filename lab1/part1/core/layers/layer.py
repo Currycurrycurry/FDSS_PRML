@@ -15,22 +15,6 @@ class BaseLayer(object):
         self.inputs = np.mat(np.zeros(last_layer_size))
         self.outputs = np.mat(np.zeros(size))
 
-    # @property
-    # @abc.abstractmethod
-    # def input_size(self):
-    #     pass
-    #
-    #
-    # @value.setter
-    # @abc.abstractmethod
-    # def input_size(self, input_size):
-    #     return
-    #
-    # @property
-    # @abc.abstractmethod
-    # def output_size(self):
-    #     pass
-
     def set_last_layer_size(self, last_layer_size):
         self.last_layer_size = last_layer_size
         self.inputs = np.mat(np.zeros(last_layer_size))
@@ -72,9 +56,8 @@ class BaseLayer(object):
         delta = self.get_backward_optimized_delta(errors)
         logger.debug(delta)
         result = np.dot(delta, self.weights.T)
+        logger.debug('back inputs: {}'.format(self.inputs.T))
+        logger.debug('back delta: {}'.format(delta))
         self.weights += self.learning_rate * np.dot(self.inputs.T, delta)
         self.biases -= self.learning_rate * delta
         return result
-
-
-

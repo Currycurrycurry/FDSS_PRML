@@ -1,6 +1,5 @@
 import random
 import json
-import numpy as np
 from lab1.part1.util.logger_util import logger
 from lab1.part1.util.math_util import get_accuracy
 from lab1.part1.util.file_util import load_data
@@ -11,7 +10,7 @@ if __name__ == '__main__':
         config = json.load(f)
     logger.info(config)
     mlp = FNN(config)
-    train_dataset = load_data('../../train/')
+    train_dataset = load_data('../../train/')[20:]
     random.shuffle(train_dataset)
     logger.debug(train_dataset)
     train_x = [x[0] for x in train_dataset]

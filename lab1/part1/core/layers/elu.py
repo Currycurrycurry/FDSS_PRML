@@ -23,7 +23,7 @@ class ELULayer(BaseLayer):
 
 
 if __name__ == '__main__':
-   print(issubclass(ELULayer, BaseLayer))
-   print(isinstance(ELULayer(), BaseLayer))
-   print(dir(BaseLayer))
-   print(BaseLayer.__subclasses__())
+    print(issubclass(ELULayer, BaseLayer))
+    print(isinstance(ELULayer(), BaseLayer))
+    print(dir(BaseLayer))
+    print(BaseLayer.__subclasses__())

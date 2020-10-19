@@ -3,6 +3,7 @@ import numpy as np
 from lab1.part1.core.layerFactory import LayerFactory
 from lab1.part1.util.logger_util import logger
 
+
 class FNN:
     def __init__(self, config, learning_rate=0.001):
         self.config = config
@@ -15,7 +16,7 @@ class FNN:
         for i in range(len(layers)):
             layer_config = layers[i]
             size = layer_config['size']
-            activation=layer_config['activation']
+            activation = layer_config['activation']
             weights = layer_config.get('weights', None)
             weights = np.mat(weights) if weights else None
             biases = layer_config.get('biases', None)
@@ -57,9 +58,3 @@ class FNN:
             result = self.forward(x)
             results.append(result.tolist())
         return results
-
-
-
-
-
-

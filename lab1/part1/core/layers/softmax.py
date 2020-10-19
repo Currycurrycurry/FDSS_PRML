@@ -10,11 +10,12 @@ class SoftmaxLayer(BaseLayer):
         return tmp / np.sum(tmp)
 
     def get_backward_optimized_delta(self, errors):
-        return np.diag(self.outputs.tolist()[0]) - np.dot(self.outputs.T, self.outputs)
+        tmp = np.diag(self.outputs.tolist()[0]) - np.dot(self.outputs.T, self.outputs)
+        return np.dot(errors, tmp)
 
 
 if __name__ == '__main__':
-   print(issubclass(SoftmaxLayer, BaseLayer))
-   print(isinstance(SoftmaxLayer(), BaseLayer))
-   print(dir(BaseLayer))
-   print(BaseLayer.__subclasses__())
+    print(issubclass(SoftmaxLayer, BaseLayer))
+    print(isinstance(SoftmaxLayer(), BaseLayer))
+    print(dir(BaseLayer))
+    print(BaseLayer.__subclasses__())
