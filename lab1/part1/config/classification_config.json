@@ -1,14 +1,18 @@
 {
-  "input_size": 1,
-  "layer_num": 2,
+  "input_size": 784,
+  "layer_num": 3,
   "layers": [
     {
-        "size": 5,
-        "activation": "sigmoid"
+        "size": 256,
+        "activation": "relu"
     },
     {
-        "size": 1,
-        "activation": "dense"
+        "size": 256,
+        "activation": "relu"
+    },
+    {
+        "size": 12,
+        "activation": "softmax"
     }
   ]
 }
